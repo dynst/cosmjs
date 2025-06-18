@@ -261,7 +261,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -314,7 +313,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
     nyc: "npm:^15.1.0"
@@ -358,7 +356,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -408,7 +405,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -450,7 +446,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -490,7 +485,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -534,7 +528,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
     koa: "npm:^2.13"
@@ -569,7 +562,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -615,7 +607,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -651,7 +642,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -696,7 +686,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -736,7 +725,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     isomorphic-ws: "npm:^4.0.1"
     jasmine: "npm:^4"
@@ -787,7 +775,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -826,7 +813,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -873,7 +859,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -914,7 +899,6 @@ __metadata:
     eslint-plugin-import: "npm:^2.25.0"
     eslint-plugin-prettier: "npm:^5.5.0"
     eslint-plugin-simple-import-sort: "npm:^7.0.0"
-    esm: "npm:^3.2.25"
     glob: "npm:^10"
     jasmine: "npm:^4"
     jasmine-spec-reporter: "npm:^6"
@@ -3800,13 +3784,6 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: 10c0/1fd31533086c1b72f86770a4d9d7058ee8b4643fd1cfd10c7aac1ecb8725698e88352a87805cf4b2ce890aa35947df4b4da9655fb7fdfa60dbb448a43f6ebcf1
-  languageName: node
-  linkType: hard
-
-"esm@npm:^3.2.25":
-  version: 3.2.25
-  resolution: "esm@npm:3.2.25"
-  checksum: 10c0/8e60e8075506a7ce28681c30c8f54623fe18a251c364cd481d86719fc77f58aa055b293d80632d9686d5408aaf865ffa434897dc9fd9153c8b3f469fad23f094
   languageName: node
   linkType: hard
 
