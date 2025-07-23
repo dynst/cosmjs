@@ -80,7 +80,7 @@ describe("ReconnectingSocket", () => {
     const stopServerCmd = `${dirPath}/stop.sh`;
 
     it("automatically reconnects if no connection can be established at init", async () => {
-      let pass!: () => void, fail!: (reason?: any) => void;
+      let pass!: (_: unknown) => void, fail!: (reason?: any) => void;
       const ret = new Promise((resolve, reject) => {
         pass = resolve;
         fail = reject;
@@ -136,7 +136,7 @@ describe("ReconnectingSocket", () => {
     });
 
     it("automatically reconnects if the connection is broken off", async () => {
-      let pass!: () => void, fail!: (reason?: any) => void;
+      let pass!: (_: unknown) => void, fail!: (reason?: any) => void;
       const ret = new Promise((resolve, reject) => {
         pass = resolve;
         fail = reject;
