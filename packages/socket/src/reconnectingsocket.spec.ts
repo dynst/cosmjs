@@ -4,7 +4,7 @@ import { ReconnectingSocket } from "./reconnectingsocket";
 type Exec = (command: string, callback: (error: null | (Error & { readonly code?: number })) => void) => void;
 
 const getExec = async (): Promise<Exec> => {
-  const exec = (await import("node:child_process")).exec;
+  const exec = (await import("child_process")).exec;
   if (!exec) {
     throw new Error("no exec()");
   }
