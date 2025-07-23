@@ -1,31 +1,19 @@
-import assert from "assert";
-
 import { ReconnectingSocket } from "./reconnectingsocket";
 
 /** @see https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback */
 type Exec = (command: string, callback: (error: null | (Error & { readonly code?: number })) => void) => void;
 
-let exec: Exec | undefined;
-let childProcessAvailable: boolean;
-
-try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  exec = require("child_process").exec;
-  assert.strict(typeof exec === "function");
-  childProcessAvailable = true;
-} catch {
-  childProcessAvailable = false;
-}
+const getExec = async (): Promise<Exec> => {
+  const exec = (await import("node:child_process")).exec;
+  if (!exec) {
+    throw new Error("no exec()");
+  }
+  return exec;
+};
 
 function pendingWithoutSocketServer(): void {
   if (!process.env.SOCKETSERVER_ENABLED) {
     pending("Set SOCKETSERVER_ENABLED to enable socket tests");
-  }
-}
-
-function pendingWithoutChildProcess(): void {
-  if (!childProcessAvailable) {
-    pending("Run test in an environment which supports child processes to enable socket tests");
   }
 }
 
@@ -104,10 +92,17 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      pendingWithoutChildProcess();
+      let exec!: Exec;
+      try {
+        exec = await getExec();
+      } catch {
+        pending("Run test in an environment which supports child processes to enable socket tests");
+        return;
+      }
+
       pendingWithoutSocketServer();
 
-      exec!(stopServerCmd, (stopError) => {
+      exec(stopServerCmd, (stopError) => {
         if (stopError && stopError.code !== codePkillNoProcessesMatched) {
           fail(stopError);
         }
@@ -134,7 +129,7 @@ describe("ReconnectingSocket", () => {
 
         setTimeout(
           () =>
-            exec!(startServerCmd, (startError) => {
+            exec(startServerCmd, (startError) => {
               if (startError) {
                 fail(startError);
               }
@@ -153,7 +148,14 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      pendingWithoutChildProcess();
+      let exec!: Exec;
+      try {
+        exec = await getExec();
+      } catch {
+        pending("Run test in an environment which supports child processes to enable socket tests");
+        return;
+      }
+
       pendingWithoutSocketServer();
 
       const socket = new ReconnectingSocket(socketServerUrl);
@@ -178,7 +180,7 @@ describe("ReconnectingSocket", () => {
 
       setTimeout(
         () =>
-          exec!(stopServerCmd, (stopError) => {
+          exec(stopServerCmd, (stopError) => {
             if (stopError && stopError.code !== codePkillNoProcessesMatched) {
               fail(stopError);
             }
@@ -193,7 +195,7 @@ describe("ReconnectingSocket", () => {
 
               setTimeout(
                 () =>
-                  exec!(startServerCmd, (startError) => {
+                  exec(startServerCmd, (startError) => {
                     if (startError) {
                       fail(startError);
                     }
