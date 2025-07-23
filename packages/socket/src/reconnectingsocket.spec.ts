@@ -1,10 +1,7 @@
 import { ReconnectingSocket } from "./reconnectingsocket";
 
 /** @see https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback */
-type Exec = (
-  command: string,
-  callback: (error: null | (Error & { readonly code: number | undefined })) => void,
-) => void;
+type Exec = (command: string, callback: (error: null | (Error & { readonly code?: number })) => void) => void;
 
 const getExec = async (): Exec => (await import("node:child_process")).exec;
 
