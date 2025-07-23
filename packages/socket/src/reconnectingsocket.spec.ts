@@ -3,13 +3,7 @@ import { ReconnectingSocket } from "./reconnectingsocket";
 /** @see https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback */
 type Exec = (command: string, callback: (error: null | (Error & { readonly code?: number })) => void) => void;
 
-const getExec = async (): Promise<Exec> => {
-  const exec = (await import("child_process")).exec;
-  if (!exec) {
-    throw new Error("no exec()");
-  }
-  return exec;
-};
+const getExec = async (): Promise<Exec | undefined> => (await import("child_process")).exec;
 
 function pendingWithoutSocketServer(): void {
   if (!process.env.SOCKETSERVER_ENABLED) {
@@ -92,10 +86,8 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      let exec!: Exec;
-      try {
-        exec = await getExec();
-      } catch {
+      const exec = await getExec();
+      if (exec === undefined) {
         pending("Run test in an environment which supports child processes to enable socket tests");
         return;
       }
@@ -148,10 +140,8 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      let exec!: Exec;
-      try {
-        exec = await getExec();
-      } catch {
+      const exec = await getExec();
+      if (exec === undefined) {
         pending("Run test in an environment which supports child processes to enable socket tests");
         return;
       }
