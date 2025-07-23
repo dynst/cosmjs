@@ -86,7 +86,7 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      let exec;
+      let exec!: Exec;
       try {
         exec = await getExec();
       } catch {
@@ -142,7 +142,7 @@ describe("ReconnectingSocket", () => {
         fail = reject;
       });
 
-      let exec;
+      let exec!: Exec;
       try {
         exec = await getExec();
       } catch {
