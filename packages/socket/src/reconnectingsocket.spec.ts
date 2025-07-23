@@ -97,7 +97,7 @@ describe("ReconnectingSocket", () => {
     const startServerCmd = `${dirPath}/start.sh`;
     const stopServerCmd = `${dirPath}/stop.sh`;
 
-    it("automatically reconnects if no connection can be established at init", (done) => {
+    it("automatically reconnects if no connection can be established at init", async (done) => {
       pendingWithoutChildProcess();
       pendingWithoutSocketServer();
 
@@ -138,7 +138,7 @@ describe("ReconnectingSocket", () => {
       });
     });
 
-    it("automatically reconnects if the connection is broken off", (done) => {
+    it("automatically reconnects if the connection is broken off", async (done) => {
       pendingWithoutChildProcess();
       pendingWithoutSocketServer();
 
