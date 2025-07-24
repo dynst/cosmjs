@@ -34,7 +34,7 @@ export async function http(
     },
     signal: timeout ? AbortSignal.timeout(timeout) : undefined,
   };
-  return fetch(url, settings)
+  return fetch(url, settings as any)
     .then(filterBadStatus)
     .then((res: any) => res.json());
 }
