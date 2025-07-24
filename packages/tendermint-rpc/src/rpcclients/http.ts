@@ -1,4 +1,6 @@
-const fetch = 'self' in globalThis ? globalThis.fetch : (await import("node-fetch")).default;
+import polyfill from "node-fetch";
+
+const fetch = 'self' in globalThis ? globalThis.fetch : polyfill;
 
 // Node.js uses 'unidici-types' which defines body as 'BodyInit | undefined',
 // but node-fetch defines body as 'BodyInit | null | undefined'.

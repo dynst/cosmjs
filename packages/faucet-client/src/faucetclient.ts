@@ -1,4 +1,6 @@
-const fetch = 'self' in globalThis ? globalThis.fetch : (await import("node-fetch")).default;
+import polyfill from "node-fetch";
+
+const fetch = 'self' in globalThis ? globalThis.fetch : polyfill;
 
 /**
  * Strip trailing `/`s
