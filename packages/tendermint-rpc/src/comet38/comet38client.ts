@@ -357,7 +357,7 @@ export class Comet38Client {
 
     const req = Params.encodeSubscribe(request);
     const eventStream = this.client.listen(req);
-    return eventStream.map<T>((event) => {
+    return eventStream.map<T>((event: SubscriptionEvent) => {
       return decode(event);
     });
   }
