@@ -1,5 +1,9 @@
 const fetch = 'self' in globalThis ? globalThis.fetch : (await import("node-fetch")).default;
 
+// Node.js uses 'unidici-types' which defines body as 'BodyInit | undefined',
+// but node-fetch defines body as 'BodyInit | null | undefined'.
+import type { RequestInit } from "node-fetch"
+
 function filterBadStatus(res: any): any {
   if (res.status >= 400) {
     throw new Error(`Bad status on response: ${res.status}`);
