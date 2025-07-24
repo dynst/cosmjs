@@ -1,7 +1,7 @@
 import { JsonRpcRequest, JsonRpcSuccessResponse } from "@cosmjs/json-rpc";
 import { Stream } from "xstream";
 
-import { createJsonRpcRequest } from "../jsonrpc";
+import { createJsonRpcRequest } from "../jsonrpc.js";
 import {
   HttpClient,
   HttpEndpoint,
@@ -9,10 +9,10 @@ import {
   RpcClient,
   SubscriptionEvent,
   WebsocketClient,
-} from "../rpcclients";
-import { Params, Responses } from "./adaptor";
-import * as requests from "./requests";
-import * as responses from "./responses";
+} from "../rpcclients/index.js";
+import { Params, Responses } from "./adaptor/index.js";
+import * as requests from "./requests.js";
+import * as responses from "./responses.js";
 
 // Encoder is a generic that matches all methods of Params
 type Encoder<T extends requests.Request> = (req: T) => JsonRpcRequest;

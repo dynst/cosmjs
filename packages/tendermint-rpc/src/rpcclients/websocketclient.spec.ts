@@ -2,10 +2,10 @@ import { Uint53 } from "@cosmjs/math";
 import { toListPromise } from "@cosmjs/stream";
 import { Stream } from "xstream";
 
-import { createJsonRpcRequest } from "../jsonrpc";
-import { defaultInstance } from "../testutil.spec";
-import { SubscriptionEvent } from "./rpcclient";
-import { WebsocketClient } from "./websocketclient";
+import { createJsonRpcRequest } from "../jsonrpc.js";
+import { defaultInstance } from "../testutil.spec.js";
+import { SubscriptionEvent } from "./rpcclient.js";
+import { WebsocketClient } from "./websocketclient.js";
 
 function pendingWithoutTendermint(): void {
   if (!process.env.TENDERMINT_ENABLED) {

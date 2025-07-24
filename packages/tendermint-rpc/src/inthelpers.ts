@@ -1,6 +1,6 @@
 import { Int53 } from "@cosmjs/math";
 
-import { assertString } from "./tendermint34/encodings";
+import { assertString } from "./tendermint34/encodings.js";
 
 /**
  * Takes an integer value from the Tendermint RPC API and

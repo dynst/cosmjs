@@ -1,7 +1,7 @@
-import { Comet38Client } from "./comet38";
-import { HttpEndpoint } from "./rpcclients";
-import { Tendermint34Client } from "./tendermint34";
-import { Tendermint37Client } from "./tendermint37";
+import { Comet38Client } from "./comet38/index.js";
+import { HttpEndpoint } from "./rpcclients/index.js";
+import { Tendermint34Client } from "./tendermint34/index.js";
+import { Tendermint37Client } from "./tendermint37/index.js";
 
 /**
  * A TendermintClient is either a Tendermint34Client or a Tendermint37Client

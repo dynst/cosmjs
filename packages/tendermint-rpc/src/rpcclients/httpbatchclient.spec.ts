@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { createJsonRpcRequest } from "../jsonrpc";
-import { defaultInstance } from "../testutil.spec";
-import { HttpBatchClient } from "./httpbatchclient";
+import { createJsonRpcRequest } from "../jsonrpc.js";
+import { defaultInstance } from "../testutil.spec.js";
+import { HttpBatchClient } from "./httpbatchclient.js";
 
 function pendingWithoutTendermint(): void {
   if (!process.env.TENDERMINT_ENABLED) {

@@ -25,8 +25,8 @@ export type {
   TxSearchRequest,
   ValidatorsParams,
   ValidatorsRequest,
-} from "./requests";
-export { Method, SubscriptionEventType } from "./requests";
+} from "./requests.js";
+export { Method, SubscriptionEventType } from "./requests.js";
 export type {
   AbciInfoResponse,
   AbciQueryResponse,
@@ -71,6 +71,6 @@ export type {
   ValidatorsResponse,
   Version,
   Vote,
-} from "./responses";
-export { broadcastTxCommitSuccess, broadcastTxSyncSuccess, VoteType } from "./responses";
-export { Tendermint34Client } from "./tendermint34client";
+} from "./responses.js";
+export { broadcastTxCommitSuccess, broadcastTxSyncSuccess, VoteType } from "./responses.js";
+export { Tendermint34Client } from "./tendermint34client.js";

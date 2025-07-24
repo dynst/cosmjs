@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { fromBase64, fromHex, toUtf8 } from "@cosmjs/encoding";
 
-import { decodeEvent, decodeValidatorGenesis, decodeValidatorInfo, decodeValidatorUpdate } from "./responses";
+import { decodeEvent, decodeValidatorGenesis, decodeValidatorInfo, decodeValidatorUpdate } from "./responses.js";
 
 describe("Responses", () => {
   describe("decodeEvent", () => {

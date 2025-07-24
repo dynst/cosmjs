@@ -7,7 +7,7 @@ import {
   decodeValidatorGenesis,
   decodeValidatorInfo,
   decodeValidatorUpdate,
-} from "./responses";
+} from "./responses.js";
 
 describe("Responses", () => {
   describe("decodeEvent", () => {

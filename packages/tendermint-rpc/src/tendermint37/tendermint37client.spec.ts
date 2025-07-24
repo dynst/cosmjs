@@ -5,7 +5,7 @@ import { assert, sleep } from "@cosmjs/utils";
 import { ReadonlyDate } from "readonly-date";
 import { Stream } from "xstream";
 
-import { HttpClient, RpcClient, WebsocketClient } from "../rpcclients";
+import { HttpClient, RpcClient, WebsocketClient } from "../rpcclients/index.js";
 import {
   buildKvTx,
   ExpectedValues,
@@ -15,11 +15,11 @@ import {
   tendermintEnabled,
   tendermintInstances,
   tendermintSearchIndexUpdated,
-} from "../testutil.spec";
-import { hashTx } from "./hasher";
-import { buildQuery } from "./requests";
-import * as responses from "./responses";
-import { Tendermint37Client } from "./tendermint37client";
+} from "../testutil.spec.js";
+import { hashTx } from "./hasher.js";
+import { buildQuery } from "./requests.js";
+import * as responses from "./responses.js";
+import { Tendermint37Client } from "./tendermint37client.js";
 
 function defaultTestSuite(rpcFactory: () => RpcClient, expected: ExpectedValues): void {
   describe("create", () => {

@@ -1,7 +1,7 @@
 import { toUtf8 } from "@cosmjs/encoding";
 
-import { ReadonlyDateWithNanoseconds } from "../dates";
-import { BlockId, Version } from "./responses";
+import { ReadonlyDateWithNanoseconds } from "../dates.js";
+import { BlockId, Version } from "./responses.js";
 
 /**
  * A runtime checker that ensures a given value is set (i.e. not undefined or null)

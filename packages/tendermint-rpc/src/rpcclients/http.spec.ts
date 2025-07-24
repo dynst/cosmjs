@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { createJsonRpcRequest } from "../jsonrpc";
-import { defaultInstance, pendingWithoutTendermint } from "../testutil.spec";
-import { http } from "./http";
+import { createJsonRpcRequest } from "../jsonrpc.js";
+import { defaultInstance, pendingWithoutTendermint } from "../testutil.spec.js";
+import { http } from "./http.js";
 
 function pendingWithoutHttpServer(): void {
   if (!process.env.HTTPSERVER_ENABLED) {
