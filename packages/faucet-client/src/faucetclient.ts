@@ -1,4 +1,4 @@
-import fetch from "cross-fetch";
+const fetch = 'self' in globalThis ? globalThis.fetch : (await import("node-fetch")).default;
 
 /**
  * Strip trailing `/`s
