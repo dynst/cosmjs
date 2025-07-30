@@ -1,6 +1,4 @@
 import { assert } from "@cosmjs/utils";
-import { pbkdf2Async as noblePbkdf2Async } from "@noble/hashes/pbkdf2";
-import { sha512 as nobleSha512 } from "@noble/hashes/sha512";
 
 export async function getSubtle(): Promise<any | undefined> {
   // From Node.js 15 onwards, webcrypto is available in globalThis.
@@ -47,15 +45,6 @@ export async function pbkdf2Sha512Subtle(
   );
 }
 
-export async function pbkdf2Sha512Noble(
-  secret: Uint8Array,
-  salt: Uint8Array,
-  iterations: number,
-  keylen: number,
-): Promise<Uint8Array> {
-  return noblePbkdf2Async(nobleSha512, secret, salt, { c: iterations, dkLen: keylen });
-}
-
 /**
  * A pbkdf2 implementation for BIP39. This is not exported at package level and thus a private API.
  */
@@ -66,9 +55,5 @@ export async function pbkdf2Sha512(
   keylen: number,
 ): Promise<Uint8Array> {
   const subtle = await getSubtle();
-  if (subtle) {
-    return pbkdf2Sha512Subtle(subtle, secret, salt, iterations, keylen);
-  } else {
-    return pbkdf2Sha512Noble(secret, salt, iterations, keylen);
-  }
+  return pbkdf2Sha512Subtle(subtle, secret, salt, iterations, keylen);
 }
