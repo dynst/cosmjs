@@ -18,11 +18,9 @@ module.exports = [
     },
     plugins: [new webpack.EnvironmentPlugin({ SOCKETSERVER_ENABLED: "" })],
     resolve: {
-      alias: {
-        child_process: "../empty.mjs",
-      },
       fallback: {
         assert: false,
+        child_process: false,
       },
     },
   },
