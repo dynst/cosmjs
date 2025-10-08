@@ -177,7 +177,7 @@ describe("BankExtension", () => {
       pendingWithoutSimapp();
       const [client, cometClient] = await makeClientWithBank(simapp.tendermintUrlHttp);
 
-      await expect(client.bank.denomMetadata("nothere")).rejects.toThrowError(/code = NotFound/i);
+      await expectAsync(client.bank.denomMetadata("nothere")).toBeRejectedWithError(/code = NotFound/i);
 
       cometClient.disconnect();
     });

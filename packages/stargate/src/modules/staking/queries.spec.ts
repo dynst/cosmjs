@@ -181,9 +181,9 @@ describe("StakingExtension", () => {
       pendingWithoutSimapp();
       const [client, cometClient] = await makeClientWithStaking(simapp.tendermintUrlHttp);
 
-      await expect(
+      await expectAsync(
         client.staking.redelegations(faucet.address0, validator.validatorAddress, validator.validatorAddress),
-      ).rejects.toThrowError(/redelegation not found/i);
+      ).toBeRejectedWithError(/redelegation not found/i);
 
       cometClient.disconnect();
     });

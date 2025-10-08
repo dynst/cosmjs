@@ -54,7 +54,7 @@ describe("AuthExtension", () => {
       pendingWithoutSimapp();
       const [client, cometClient] = await makeClientWithAuth(simapp.tendermintUrlHttp);
 
-      await expect(client.auth.account(nonExistentAddress)).rejects.toThrowError(
+      await expectAsync(client.auth.account(nonExistentAddress)).toBeRejectedWithError(
         /account cosmos1p79apjaufyphcmsn4g07cynqf0wyjuezqu84hd not found/i,
       );
 

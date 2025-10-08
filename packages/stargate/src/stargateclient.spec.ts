@@ -188,7 +188,7 @@ describe("StargateClient", () => {
       pendingWithoutSimapp();
       const client = await StargateClient.connect(simapp.tendermintUrlHttp);
 
-      await expect(client.getSequence(nonExistentAddress)).rejects.toThrowError(
+      await expectAsync(client.getSequence(nonExistentAddress)).toBeRejectedWithError(
         /account '([a-z0-9]{10,90})' does not exist on chain/i,
       );
 
@@ -558,7 +558,7 @@ describe("StargateClient", () => {
       });
       const txRawBytes2 = Uint8Array.from(TxRaw.encode(txRaw2).finish());
       const smallTimeoutMs = 1_000;
-      await expect(client.broadcastTx(txRawBytes2, smallTimeoutMs)).rejects.toThrowError(
+      await expectAsync(client.broadcastTx(txRawBytes2, smallTimeoutMs)).toBeRejectedWithError(
         TimeoutError,
         /transaction with id .+ was submitted but was not yet found on the chain/i,
       );

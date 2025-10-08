@@ -985,9 +985,9 @@ describe("SigningStargateClient", () => {
         const height = await client.getHeight();
         const signed = await client.sign(faucet.address0, [msgAny], fee, memo, undefined, BigInt(height - 1));
 
-        await expect(
+        await expectAsync(
           client.broadcastTx(Uint8Array.from(TxRaw.encode(signed).finish())),
-        ).rejects.toBeTruthyWith(
+        ).toBeRejectedWith(
           jasmine.objectContaining({
             code: 30,
           }),
@@ -1267,9 +1267,9 @@ describe("SigningStargateClient", () => {
         const height = await client.getHeight();
         const signed = await client.sign(faucet.address0, [msgAny], fee, memo, undefined, BigInt(height - 1));
 
-        await expect(
+        await expectAsync(
           client.broadcastTx(Uint8Array.from(TxRaw.encode(signed).finish())),
-        ).rejects.toBeTruthyWith(
+        ).toBeRejectedWith(
           jasmine.objectContaining({
             code: 30,
           }),
