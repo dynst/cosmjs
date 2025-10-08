@@ -2,7 +2,7 @@ import { createJsonRpcRequest } from "../jsonrpc";
 import { defaultInstance, tendermintEnabled } from "../testutil.spec";
 import { HttpBatchClient } from "./httpbatchclient";
 
-(tendermintEnabled ? describe : describe.skip)("HttpBatchClient", () => {
+(tendermintEnabled ? describe : xdescribe)("HttpBatchClient", () => {
   const tendermintUrl = "http://" + defaultInstance.url;
 
   it("can make a simple call", async () => {
@@ -15,7 +15,7 @@ import { HttpBatchClient } from "./httpbatchclient";
     expect(statusResponse.result).toBeTruthy();
     expect(statusResponse.result.node_info).toBeTruthy();
 
-    await expect(client.execute(createJsonRpcRequest("no-such-method"))).rejects.toBeTruthy();
+    await expectAsync(client.execute(createJsonRpcRequest("no-such-method"))).toBeRejected();
 
     client.disconnect();
   });

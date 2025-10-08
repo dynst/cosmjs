@@ -8,12 +8,12 @@ const tendermintUrl = defaultInstance.url;
 const echoUrl = "http://localhost:5555/echo_headers";
 
 describe("http", () => {
-  (tendermintEnabled ? it : it.skip)("can send a health request", async () => {
+  (tendermintEnabled ? it : xit)("can send a health request", async () => {
     const response = await http("POST", `http://${tendermintUrl}`, undefined, createJsonRpcRequest("health"));
     expect(response).toEqual(jasmine.objectContaining({ jsonrpc: "2.0" }));
   });
 
-  (httpServerEnabled ? it : it.skip)("can POST to echo server", async () => {
+  (httpServerEnabled ? it : xit)("can POST to echo server", async () => {
     const response = await http("POST", echoUrl, undefined, createJsonRpcRequest("health"));
     expect(response).toEqual({
       request_headers: jasmine.objectContaining({
@@ -24,12 +24,12 @@ describe("http", () => {
   });
 
   it("errors for non-open port", async () => {
-    await expect(
+    await expectAsync(
       http("POST", `http://localhost:56745`, undefined, createJsonRpcRequest("health")),
-    ).rejects.toThrowError(/(ECONNREFUSED|Failed to fetch|fetch failed|(request to .* failed))/i);
+    ).toBeRejectedWithError(/(ECONNREFUSED|Failed to fetch|fetch failed|(request to .* failed))/i);
   });
 
-  (httpServerEnabled ? it : it.skip)("can POST to echo server with custom headers", async () => {
+  (httpServerEnabled ? it : xit)("can POST to echo server with custom headers", async () => {
     // With custom headers
     const response = await http(
       "POST",

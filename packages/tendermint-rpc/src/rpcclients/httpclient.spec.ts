@@ -2,7 +2,7 @@ import { createJsonRpcRequest } from "../jsonrpc";
 import { defaultInstance, tendermintEnabled } from "../testutil.spec";
 import { HttpClient } from "./httpclient";
 
-(tendermintEnabled ? describe : describe.skip)("HttpClient", () => {
+(tendermintEnabled ? describe : xdescribe)("HttpClient", () => {
   const tendermintUrl = "http://" + defaultInstance.url;
 
   it("can make a simple call", async () => {
@@ -15,7 +15,7 @@ import { HttpClient } from "./httpclient";
     expect(statusResponse.result).toBeTruthy();
     expect(statusResponse.result.node_info).toBeTruthy();
 
-    await expect(client.execute(createJsonRpcRequest("no-such-method"))).rejects.toBeTruthy();
+    await expectAsync(client.execute(createJsonRpcRequest("no-such-method"))).toBeRejected();
 
     client.disconnect();
   });

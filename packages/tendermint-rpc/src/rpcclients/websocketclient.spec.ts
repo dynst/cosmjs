@@ -7,7 +7,7 @@ import { defaultInstance, tendermintEnabled } from "../testutil.spec";
 import { SubscriptionEvent } from "./rpcclient";
 import { WebsocketClient } from "./websocketclient";
 
-(tendermintEnabled ? describe : describe.skip)("WebsocketClient", () => {
+(tendermintEnabled ? describe : xdescribe)("WebsocketClient", () => {
   const { blockTime, url } = defaultInstance;
   const tendermintUrl = "ws://" + url;
 
@@ -21,7 +21,7 @@ import { WebsocketClient } from "./websocketclient";
     expect(statusResponse.result).toBeTruthy();
     expect(statusResponse.result.node_info).toBeTruthy();
 
-    await expect(client.execute(createJsonRpcRequest("no-such-method"))).rejects.toBeTruthy();
+    await expectAsync(client.execute(createJsonRpcRequest("no-such-method"))).toBeRejected();
 
     client.disconnect();
   });
@@ -181,7 +181,7 @@ import { WebsocketClient } from "./websocketclient";
 
     client.disconnect();
 
-    await expect(client.execute(createJsonRpcRequest("health"))).rejects.toThrowError(
+    await expectAsync(client.execute(createJsonRpcRequest("health"))).toBeRejectedWithError(
       /socket has disconnected/i,
     );
   });
