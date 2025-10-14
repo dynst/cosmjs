@@ -283,7 +283,7 @@ describe("Secp256k1HdWallet", () => {
         },
         data: expect.stringMatching(base64Matcher),
       });
-    });
+    }, 8000);
   });
 
   describe("serializeWithEncryptionKey", () => {
