@@ -30,7 +30,7 @@
     "format-text": "prettier --write \"./*.md\"",
     "test-node": "vitest run --globals",
     "test-firefox": "yarn pack-web && karma start --single-run --browsers Firefox karma.conf.cjs",
-    "test-chrome": "yarn pack-web && karma start --single-run --browsers ChromeHeadless karma.conf.cjs",
+    "test-chrome": "vitest run --globals --browser",
     "test": "yarn build-or-skip && yarn test-node",
     "coverage": "nyc --reporter=text --reporter=lcov yarn test --silent",
     "build": "rm -rf ./build && tsc",
