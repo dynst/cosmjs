@@ -1,5 +1,3 @@
-import { ReadonlyDate } from "readonly-date";
-
 import { ReadonlyDateWithNanoseconds } from "../dates";
 import { CommitSignature, ValidatorPubkey } from "../types";
 
@@ -117,7 +115,7 @@ export interface CommitResponse {
 }
 
 export interface GenesisResponse {
-  readonly genesisTime: ReadonlyDate;
+  readonly genesisTime: Date;
   readonly chainId: string;
   readonly consensusParams: ConsensusParams;
   readonly validators: readonly Validator[];
@@ -270,7 +268,7 @@ export interface Vote {
   readonly validatorIndex: number;
   readonly height: number;
   readonly round: number;
-  readonly timestamp: ReadonlyDate;
+  readonly timestamp: Date;
   readonly blockId: BlockId;
   readonly signature: Uint8Array;
 }
@@ -348,11 +346,11 @@ export interface SyncInfo {
   readonly earliestAppHash?: Uint8Array;
   readonly earliestBlockHash?: Uint8Array;
   readonly earliestBlockHeight?: number;
-  readonly earliestBlockTime?: ReadonlyDate;
+  readonly earliestBlockTime?: Date;
   readonly latestBlockHash: Uint8Array;
   readonly latestAppHash: Uint8Array;
   readonly latestBlockHeight: number;
-  readonly latestBlockTime: ReadonlyDate;
+  readonly latestBlockTime: Date;
   readonly catchingUp: boolean;
 }
 

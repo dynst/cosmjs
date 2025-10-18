@@ -1,5 +1,3 @@
-import { ReadonlyDate } from "readonly-date";
-
 import {
   encodeBlockId,
   encodeBytes,
@@ -33,7 +31,7 @@ describe("encodings", () => {
 
   describe("encodeTime", () => {
     it("works", () => {
-      const readonlyDateWithNanoseconds = new ReadonlyDate(1464109200);
+      const readonlyDateWithNanoseconds = new Date(1464109200);
       (readonlyDateWithNanoseconds as any).nanoseconds = 666666;
       expect(encodeTime(readonlyDateWithNanoseconds)).toEqual(
         Uint8Array.from([0x08, 173, 174, 89, 0x10, 170, 220, 215, 95]),

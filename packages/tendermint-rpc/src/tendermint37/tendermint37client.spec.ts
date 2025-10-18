@@ -1,7 +1,6 @@
 import { toAscii, toHex } from "@cosmjs/encoding";
 import { firstEvent, toListPromise } from "@cosmjs/stream";
 import { assert, sleep } from "@cosmjs/utils";
-import { ReadonlyDate } from "readonly-date";
 import { Stream } from "xstream";
 
 import { HttpClient, RpcClient, WebsocketClient } from "../rpcclients";
@@ -601,7 +600,7 @@ function websocketTestSuite(rpcFactory: () => RpcClient, expected: ExpectedValue
       done.fail = reject;
     });
 
-    const testStart = ReadonlyDate.now();
+    const testStart = Date.now();
 
     (async () => {
       const events: responses.NewBlockHeaderEvent[] = [];
@@ -615,7 +614,7 @@ function websocketTestSuite(rpcFactory: () => RpcClient, expected: ExpectedValue
           // seems that tendermint just guarantees within the last second for timestamp
           expect(event.time.getTime()).toBeGreaterThan(testStart - 1000);
           // Tendermint clock is sometimes ahead of test clock. Add 10ms tolerance
-          expect(event.time.getTime()).toBeLessThanOrEqual(ReadonlyDate.now() + 10);
+          expect(event.time.getTime()).toBeLessThanOrEqual(Date.now() + 10);
           expect(event.lastBlockId).toBeTruthy();
 
           // merkle roots for proofs
@@ -660,7 +659,7 @@ function websocketTestSuite(rpcFactory: () => RpcClient, expected: ExpectedValue
   });
 
   it("can subscribe to block events", async () => {
-    const testStart = ReadonlyDate.now();
+    const testStart = Date.now();
 
     const transactionData1 = buildKvTx(randomString(), randomString());
     const transactionData2 = buildKvTx(randomString(), randomString());
@@ -676,7 +675,7 @@ function websocketTestSuite(rpcFactory: () => RpcClient, expected: ExpectedValue
         // seems that tendermint just guarantees within the last second for timestamp
         expect(event.header.time.getTime()).toBeGreaterThan(testStart - 1000);
         // Tendermint clock is sometimes ahead of test clock. Add 10ms tolerance
-        expect(event.header.time.getTime()).toBeLessThanOrEqual(ReadonlyDate.now() + 10);
+        expect(event.header.time.getTime()).toBeLessThanOrEqual(Date.now() + 10);
         expect(event.header.lastBlockId).toBeTruthy();
 
         // merkle roots for proofs

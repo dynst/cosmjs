@@ -2510,10 +2510,6 @@ const RAW_RUNTIME_STATE =
       "npm:3.6.0"\
     ],\
     [\
-      "readonly-date",\
-      "npm:1.0.0"\
-    ],\
-    [\
       "rechoir",\
       "npm:0.7.0"\
     ],\
@@ -3465,7 +3461,6 @@ const RAW_RUNTIME_STATE =
           ["karma-jasmine-html-reporter", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:1.6.0"],\
           ["nyc", "npm:15.1.0"],\
           ["prettier", "npm:3.6.2"],\
-          ["readonly-date", "npm:1.0.0"],\
           ["ses", "npm:1.13.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typedoc", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:0.28.5"],\
@@ -3541,7 +3536,6 @@ const RAW_RUNTIME_STATE =
           ["karma-jasmine-html-reporter", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:1.6.0"],\
           ["nyc", "npm:15.1.0"],\
           ["prettier", "npm:3.6.2"],\
-          ["readonly-date", "npm:1.0.0"],\
           ["ses", "npm:1.13.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typedoc", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:0.28.5"],\
@@ -3817,7 +3811,6 @@ const RAW_RUNTIME_STATE =
           ["karma-jasmine-html-reporter", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:1.6.0"],\
           ["nyc", "npm:15.1.0"],\
           ["prettier", "npm:3.6.2"],\
-          ["readonly-date", "npm:1.0.0"],\
           ["ses", "npm:1.13.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typedoc", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:0.28.5"],\
@@ -3888,7 +3881,6 @@ const RAW_RUNTIME_STATE =
           ["karma-jasmine-html-reporter", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:1.6.0"],\
           ["nyc", "npm:15.1.0"],\
           ["prettier", "npm:3.6.2"],\
-          ["readonly-date", "npm:1.0.0"],\
           ["ses", "npm:1.13.1"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typedoc", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:0.28.5"],\
@@ -11716,15 +11708,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["picomatch", "npm:2.2.3"],\
           ["readdirp", "npm:3.6.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["readonly-date", [\
-      ["npm:1.0.0", {\
-        "packageLocation": "./.yarn/cache/readonly-date-npm-1.0.0-e93ba2496b-7ab32bf19f.zip/node_modules/readonly-date/",\
-        "packageDependencies": [\
-          ["readonly-date", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

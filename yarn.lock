@@ -302,7 +302,6 @@ __metadata:
     karma-jasmine-html-reporter: "npm:^1.5.4"
     nyc: "npm:^15.1.0"
     prettier: "npm:^3.6.2"
-    readonly-date: "npm:^1.0.0"
     ses: "npm:^1.13.0"
     source-map-support: "npm:^0.5.19"
     typedoc: "npm:^0.28"
@@ -374,7 +373,6 @@ __metadata:
     karma-jasmine-html-reporter: "npm:^1.5.4"
     nyc: "npm:^15.1.0"
     prettier: "npm:^3.6.2"
-    readonly-date: "npm:^1.0.0"
     ses: "npm:^1.13.0"
     source-map-support: "npm:^0.5.19"
     typedoc: "npm:^0.28"
@@ -636,7 +634,6 @@ __metadata:
     karma-jasmine-html-reporter: "npm:^1.5.4"
     nyc: "npm:^15.1.0"
     prettier: "npm:^3.6.2"
-    readonly-date: "npm:^1.0.0"
     ses: "npm:^1.13.0"
     source-map-support: "npm:^0.5.19"
     typedoc: "npm:^0.28"
@@ -703,7 +700,6 @@ __metadata:
     karma-jasmine-html-reporter: "npm:^1.5.4"
     nyc: "npm:^15.1.0"
     prettier: "npm:^3.6.2"
-    readonly-date: "npm:^1.0.0"
     ses: "npm:^1.13.0"
     source-map-support: "npm:^0.5.19"
     typedoc: "npm:^0.28"
@@ -6732,13 +6728,6 @@ __metadata:
   dependencies:
     picomatch: "npm:^2.2.1"
   checksum: 10c0/6fa848cf63d1b82ab4e985f4cf72bd55b7dcfd8e0a376905804e48c3634b7e749170940ba77b32804d5fe93b3cc521aa95a8d7e7d725f830da6d93f3669ce66b
-  languageName: node
-  linkType: hard
-
-"readonly-date@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "readonly-date@npm:1.0.0"
-  checksum: 10c0/7ab32bf19f6bfec102584a524fa79a289e6ede0bf20c80fd90ab309962e45b71d19dd0e3915dff6e81edf226f08fda65e890539b4aca74668921790b10471356
   languageName: node
   linkType: hard
 

@@ -1,5 +1,3 @@
-import { ReadonlyDate } from "readonly-date";
-
 const rfc3339Matcher =
   /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(\.\d{1,9})?((?:[+-]\d{2}:\d{2})|Z)$/;
 
@@ -47,7 +45,7 @@ export function fromRfc3339(str: string): Date {
   return new Date(date.getTime() - tzOffset * 1000);
 }
 
-export function toRfc3339(date: Date | ReadonlyDate): string {
+export function toRfc3339(date: Date): string {
   const year = date.getUTCFullYear();
   const month = padded(date.getUTCMonth() + 1);
   const day = padded(date.getUTCDate());

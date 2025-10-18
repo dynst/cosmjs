@@ -10,7 +10,6 @@ import {
 } from "@cosmjs/proto-signing";
 import { assert, sleep } from "@cosmjs/utils";
 import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
-import { ReadonlyDate } from "readonly-date";
 
 import {
   assertIsDeliverTxSuccess,
@@ -203,10 +202,8 @@ describe("isDeliverTxSuccess", () => {
       );
 
       expect(response.header.height).toBeGreaterThanOrEqual(1);
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeLessThan(ReadonlyDate.now());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeGreaterThanOrEqual(
-        ReadonlyDate.now() - 5_000,
-      );
+      expect(new Date(response.header.time).getTime()).toBeLessThan(Date.now());
+      expect(new Date(response.header.time).getTime()).toBeGreaterThanOrEqual(Date.now() - 5_000);
 
       client.disconnect();
     });
@@ -227,10 +224,8 @@ describe("isDeliverTxSuccess", () => {
         }),
       );
 
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeLessThan(ReadonlyDate.now());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeGreaterThanOrEqual(
-        ReadonlyDate.now() - 5_000,
-      );
+      expect(new Date(response.header.time).getTime()).toBeLessThan(Date.now());
+      expect(new Date(response.header.time).getTime()).toBeGreaterThanOrEqual(Date.now() - 5_000);
 
       client.disconnect();
     });

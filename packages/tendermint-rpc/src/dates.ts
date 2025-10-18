@@ -1,16 +1,12 @@
 import { fromRfc3339 } from "@cosmjs/encoding";
 import { Uint32 } from "@cosmjs/math";
-import { ReadonlyDate } from "readonly-date";
-
-export interface ReadonlyDateWithNanoseconds extends ReadonlyDate {
-  /* Nanoseconds after the time stored in a vanilla ReadonlyDate (millisecond granularity) */
-  readonly nanoseconds?: number;
-}
 
 export interface DateWithNanoseconds extends Date {
   /** Nanoseconds after the time stored in a vanilla Date (millisecond granularity) */
   nanoseconds?: number;
 }
+
+export type ReadonlyDateWithNanoseconds = DateWithNanoseconds;
 
 export function fromRfc3339WithNanoseconds(dateTimeString: string): DateWithNanoseconds {
   const out: DateWithNanoseconds = fromRfc3339(dateTimeString);

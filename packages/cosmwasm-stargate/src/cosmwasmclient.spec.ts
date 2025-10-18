@@ -12,7 +12,6 @@ import {
 import { assertIsDeliverTxSuccess, coins, MsgSendEncodeObject, StdFee } from "@cosmjs/stargate";
 import { assert, sleep } from "@cosmjs/utils";
 import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
-import { ReadonlyDate } from "readonly-date";
 
 import { Code, CosmWasmClient, PrivateCosmWasmClient } from "./cosmwasmclient";
 import { SigningCosmWasmClient } from "./signingcosmwasmclient";
@@ -126,10 +125,8 @@ interface HackatomInstance {
       // header
       expect(response.header.height).toBeGreaterThanOrEqual(1);
       expect(response.header.chainId).toEqual(await client.getChainId());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeLessThan(ReadonlyDate.now());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeGreaterThanOrEqual(
-        ReadonlyDate.now() - 5_000,
-      );
+      expect(new Date(response.header.time).getTime()).toBeLessThan(Date.now());
+      expect(new Date(response.header.time).getTime()).toBeGreaterThanOrEqual(Date.now() - 5_000);
 
       // txs
       expect(Array.isArray(response.txs)).toEqual(true);
@@ -146,10 +143,8 @@ interface HackatomInstance {
       // header
       expect(response.header.height).toEqual(height - 1);
       expect(response.header.chainId).toEqual(await client.getChainId());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeLessThan(ReadonlyDate.now());
-      expect(new ReadonlyDate(response.header.time).getTime()).toBeGreaterThanOrEqual(
-        ReadonlyDate.now() - 5_000,
-      );
+      expect(new Date(response.header.time).getTime()).toBeLessThan(Date.now());
+      expect(new Date(response.header.time).getTime()).toBeGreaterThanOrEqual(Date.now() - 5_000);
 
       // txs
       expect(Array.isArray(response.txs)).toEqual(true);

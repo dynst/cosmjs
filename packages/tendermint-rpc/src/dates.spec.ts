@@ -1,5 +1,3 @@
-import { ReadonlyDate } from "readonly-date";
-
 import {
   DateTime,
   DateWithNanoseconds,
@@ -27,25 +25,25 @@ describe("dates", () => {
 
   describe("toRfc3339WithNanoseconds", () => {
     it("works", () => {
-      const date1 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date1 = new Date("2020-12-15T10:57:26.778Z");
       (date1 as any).nanoseconds = 0;
       expect(toRfc3339WithNanoseconds(date1)).toEqual("2020-12-15T10:57:26.778000000Z");
-      const date2 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date2 = new Date("2020-12-15T10:57:26.778Z");
       (date2 as any).nanoseconds = 900000;
       expect(toRfc3339WithNanoseconds(date2)).toEqual("2020-12-15T10:57:26.778900000Z");
-      const date3 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date3 = new Date("2020-12-15T10:57:26.778Z");
       (date3 as any).nanoseconds = 90000;
       expect(toRfc3339WithNanoseconds(date3)).toEqual("2020-12-15T10:57:26.778090000Z");
-      const date4 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date4 = new Date("2020-12-15T10:57:26.778Z");
       (date4 as any).nanoseconds = 9000;
       expect(toRfc3339WithNanoseconds(date4)).toEqual("2020-12-15T10:57:26.778009000Z");
-      const date5 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date5 = new Date("2020-12-15T10:57:26.778Z");
       (date5 as any).nanoseconds = 900;
       expect(toRfc3339WithNanoseconds(date5)).toEqual("2020-12-15T10:57:26.778000900Z");
-      const date6 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date6 = new Date("2020-12-15T10:57:26.778Z");
       (date6 as any).nanoseconds = 90;
       expect(toRfc3339WithNanoseconds(date6)).toEqual("2020-12-15T10:57:26.778000090Z");
-      const date7 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date7 = new Date("2020-12-15T10:57:26.778Z");
       (date7 as any).nanoseconds = 9;
       expect(toRfc3339WithNanoseconds(date7)).toEqual("2020-12-15T10:57:26.778000009Z");
     });
@@ -175,25 +173,25 @@ describe("dates", () => {
     });
 
     it("encodes a string", () => {
-      const date1 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date1 = new Date("2020-12-15T10:57:26.778Z");
       (date1 as any).nanoseconds = 0;
       expect(DateTime.encode(date1)).toEqual("2020-12-15T10:57:26.778000000Z");
-      const date2 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date2 = new Date("2020-12-15T10:57:26.778Z");
       (date2 as any).nanoseconds = 900000;
       expect(DateTime.encode(date2)).toEqual("2020-12-15T10:57:26.778900000Z");
-      const date3 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date3 = new Date("2020-12-15T10:57:26.778Z");
       (date3 as any).nanoseconds = 90000;
       expect(DateTime.encode(date3)).toEqual("2020-12-15T10:57:26.778090000Z");
-      const date4 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date4 = new Date("2020-12-15T10:57:26.778Z");
       (date4 as any).nanoseconds = 9000;
       expect(DateTime.encode(date4)).toEqual("2020-12-15T10:57:26.778009000Z");
-      const date5 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date5 = new Date("2020-12-15T10:57:26.778Z");
       (date5 as any).nanoseconds = 900;
       expect(DateTime.encode(date5)).toEqual("2020-12-15T10:57:26.778000900Z");
-      const date6 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date6 = new Date("2020-12-15T10:57:26.778Z");
       (date6 as any).nanoseconds = 90;
       expect(DateTime.encode(date6)).toEqual("2020-12-15T10:57:26.778000090Z");
-      const date7 = new ReadonlyDate("2020-12-15T10:57:26.778Z");
+      const date7 = new Date("2020-12-15T10:57:26.778Z");
       (date7 as any).nanoseconds = 9;
       expect(DateTime.encode(date7)).toEqual("2020-12-15T10:57:26.778000009Z");
     });
