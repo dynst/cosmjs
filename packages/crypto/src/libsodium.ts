@@ -1,6 +1,6 @@
+import { fromBase64 } from "@cosmjs/encoding";
 import { assert, isNonNullObject } from "@cosmjs/utils";
 import { xchacha20poly1305 } from "@noble/ciphers/chacha.js";
-import { ed25519 } from "@noble/curves/ed25519.js";
 import { type IArgon2Options, argon2id } from "hash-wasm";
 import type { webcrypto } from "node:crypto";
 
@@ -91,7 +91,7 @@ export class Ed25519 {
     const pkcs8 = new Uint8Array(48);
     pkcs8.set(Ed25519.pkcs8prefix, 0);
     pkcs8.set(privKey, 16);
-    return await crypto.subtle.importKey("pkcs8", pkcs8, { name: "Ed25519" }, false, ["sign"]);
+    return await crypto.subtle.importKey("pkcs8", pkcs8, { name: "Ed25519" }, true, ["sign"]);
   }
 
   private static async importPublic(pubKey: Uint8Array): Promise<webcrypto.CryptoKey> {
@@ -111,7 +111,14 @@ export class Ed25519 {
    * and diagram on https://blog.mozilla.org/warner/2011/11/29/ed25519-keys/
    */
   public static async makeKeypair(privKey: Uint8Array): Promise<Ed25519Keypair> {
-    const pubKey = ed25519.getPublicKey(privKey);
+    const priv = await Ed25519.importPrivate(privKey);
+    const jwk = await crypto.subtle.exportKey("jwk", priv);
+
+    // Convert from base64url encoding used in JWK to standard base64 encoding.
+    assert(jwk.x !== undefined && jwk.x.length === 43);
+    const b64 = jwk.x.replace(/-/g, "+").replace(/_/g, "/") + "=";
+
+    const pubKey = fromBase64(b64);
     return new Ed25519Keypair(privKey, pubKey);
   }
 
