@@ -2,6 +2,7 @@ import { assert, isNonNullObject } from "@cosmjs/utils";
 import { xchacha20poly1305 } from "@noble/ciphers/chacha.js";
 import { ed25519 } from "@noble/curves/ed25519.js";
 import { type IArgon2Options, argon2id } from "hash-wasm";
+import type { webcrypto } from "node:crypto";
 
 export interface Argon2idOptions {
   /** Output length in bytes */
@@ -80,6 +81,27 @@ export class Ed25519Keypair {
 }
 
 export class Ed25519 {
+  private static readonly pkcs8prefix = new Uint8Array([
+    48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 112, 4, 34, 4, 32,
+  ]);
+  private static readonly spkiPrefix = new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 112, 3, 33, 0]);
+
+  private static async importPrivate(privKey: Uint8Array): Promise<webcrypto.CryptoKey> {
+    assert(privKey.length === 32, `length=${privKey.length} but private key of length 32 expected`);
+    const pkcs8 = new Uint8Array(48);
+    pkcs8.set(Ed25519.pkcs8prefix, 0);
+    pkcs8.set(privKey, 16);
+    return await crypto.subtle.importKey("pkcs8", pkcs8, { name: "Ed25519" }, false, ["sign"]);
+  }
+
+  private static async importPublic(pubKey: Uint8Array): Promise<webcrypto.CryptoKey> {
+    assert(pubKey.length === 32, `length=${pubKey.length} but public key of length 32 expected`);
+    const spki = new Uint8Array(44);
+    spki.set(Ed25519.spkiPrefix, 0);
+    spki.set(pubKey, 12);
+    return await crypto.subtle.importKey("spki", spki, { name: "Ed25519" }, false, ["verify"]);
+  }
+
   /**
    * Generates a keypair deterministically from a given 32 bytes seed.
    *
@@ -94,7 +116,8 @@ export class Ed25519 {
   }
 
   public static async createSignature(message: Uint8Array, keyPair: Ed25519Keypair): Promise<Uint8Array> {
-    return ed25519.sign(message, keyPair.privkey);
+    const key = await Ed25519.importPrivate(keyPair.privkey);
+    return new Uint8Array(await crypto.subtle.sign({ name: "Ed25519" }, key, message));
   }
 
   public static async verifySignature(
@@ -102,7 +125,8 @@ export class Ed25519 {
     message: Uint8Array,
     pubkey: Uint8Array,
   ): Promise<boolean> {
-    return ed25519.verify(signature, message, pubkey);
+    const key = await Ed25519.importPublic(pubkey);
+    return await crypto.subtle.verify({ name: "Ed25519" }, key, signature, message);
   }
 }
 
