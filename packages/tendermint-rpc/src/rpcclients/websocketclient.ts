@@ -181,10 +181,10 @@ export class WebsocketClient implements RpcStreamingClient {
       throw new Error(`Request method must be "subscribe" to start event listening`);
     }
 
-    const query = (request.params as any).query;
-    if (typeof query !== "string") {
+    if (!("query" in request.params) || typeof request.params.query !== "string") {
       throw new Error("request.params.query must be a string");
     }
+    const query = request.params.query;
 
     if (!this.subscriptionStreams.has(query)) {
       const producer = new RpcEventProducer(request, this.socket);
