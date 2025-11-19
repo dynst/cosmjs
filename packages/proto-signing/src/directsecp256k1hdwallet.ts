@@ -102,7 +102,7 @@ export function extractKdfConfiguration(serialization: string): KdfConfiguration
   const root = JSON.parse(serialization);
   if (!isNonNullObject(root)) throw new Error("Root document is not an object.");
 
-  switch ((root as any).type) {
+  switch ("type" in root && root.type) {
     case serializationTypeV1:
       return extractKdfConfigurationV1(root);
     default:
@@ -177,7 +177,7 @@ export class DirectSecp256k1HdWallet implements OfflineDirectSigner {
   public static async deserialize(serialization: string, password: string): Promise<DirectSecp256k1HdWallet> {
     const root = JSON.parse(serialization);
     if (!isNonNullObject(root)) throw new Error("Root document is not an object.");
-    switch ((root as any).type) {
+    switch ("type" in root && root.type) {
       case serializationTypeV1:
         return DirectSecp256k1HdWallet.deserializeTypeV1(serialization, password);
       default:
