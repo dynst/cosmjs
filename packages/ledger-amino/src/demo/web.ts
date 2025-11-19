@@ -14,6 +14,12 @@ const getElement = (id: string): HTMLInputElement => {
   return e;
 };
 
+const getSignDocTextArea = (): HTMLTextAreaElement => {
+  const signDocTextArea = document.getElementById("sign-doc");
+  assert(signDocTextArea instanceof HTMLTextAreaElement, "sign-doc isn't a <textarea>!");
+  return signDocTextArea;
+};
+
 const accountNumbers = [0, 1, 2, 10];
 const paths = accountNumbers.map(makeCosmoshubPath);
 
@@ -59,7 +65,7 @@ const updateMessage = (accountNumberInput: unknown): void => {
   const address = accounts[accountNumber].address;
   const addressInput = getElement("address");
   addressInput.value = address;
-  const signDocTextArea = getElement("sign-doc");
+  const signDocTextArea = getSignDocTextArea();
   signDocTextArea.textContent = createSignDoc(accountNumber, address);
 };
 
@@ -90,8 +96,10 @@ const getAccounts = async function getAccounts(signer: LedgerSigner | undefined)
   const accountNumberInput1 = getElement("account-number1");
   const accountNumberInput2 = getElement("account-number2");
   const addressInput = getElement("address");
-  const accountsDiv = getElement("accounts");
-  const signDocTextArea = getElement("sign-doc");
+  const signDocTextArea = getSignDocTextArea();
+  const accountsDiv = document.getElementById("accounts");
+
+  assert(accountsDiv instanceof HTMLDivElement, "accounts isn't a <div>!");
   accountsDiv.textContent = "Loading...";
 
   try {
@@ -139,7 +147,7 @@ const sign = async function sign(signer: LedgerSigner | undefined): Promise<void
 
   try {
     const address = getElement("address").value;
-    const signDocJson = getElement("sign-doc").textContent;
+    const signDocJson = getSignDocTextArea().textContent;
     const signDoc: StdSignDoc = JSON.parse(signDocJson);
     const signature = await signer.signAmino(address, signDoc);
     signatureDiv.textContent = JSON.stringify(signature, null, "\t");
